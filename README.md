@@ -13,11 +13,10 @@ qjs --module 00test.js
 Currently this prints out:
 
 ```
-dart-sass	1.74.1	(Sass Compiler)	[Dart]
-dart2js	3.3.3	(Dart Compiler)	[Dart]
+dart-sass 1.74.1  (Sass Compiler) [Dart]
+dart2js 3.3.3 (Dart Compiler) [Dart]
 1
 ```
 
-then hangs on the call to `sass.compileString()`. I don't know why it's hanging.
-
-
+Then it hangs on the call to `sass.compileString()`, using 100% CPU. I don't
+know why it's hanging.
