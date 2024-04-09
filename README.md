@@ -2,7 +2,7 @@ This is an attempt to run dart-sass using QuickJS. It currently does not work.
 
 Steps:
 
-First install the QuickJS command line tool.
+Get the QuickJS command line tool. An easy way to do this is to simply download the cosmopolitan binary from the QuickJS page and unzip it: https://bellard.org/quickjs/
 
 Then run
 
