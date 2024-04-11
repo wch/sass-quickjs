@@ -10,7 +10,7 @@ var startTime = Date.now();
 var topDir = os.getcwd()[0];
 
 if (scriptArgs.length < 1) {
-  console.log("Usage: jsi 00test.js <file>");
+  console.log("Usage: qjs sass.js <file>");
   std.exit(1);
 }
 
