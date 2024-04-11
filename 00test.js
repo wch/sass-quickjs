@@ -1,13 +1,56 @@
+import * as utils from "./utils.js";
+import * as os from "os";
+import * as std from "std";
+
 import * as sass from "./sass.default.js";
 
-console.log(sass.info);
-
 var startTime = Date.now();
-const res = sass.compileString(`
-.box {
-  width: 10px + 15px;
+
+
+var topDir = os.getcwd()[0];
+
+if (scriptArgs.length < 1) {
+  console.log("Usage: jsi 00test.js <file>");
+  std.exit(1);
 }
-`)
+
+// Read the file content
+var fileContent = utils.readFile(scriptArgs[1]);
+
+
+const res = sass.compileString(fileContent, {
+  importers: [
+    // An implementation of the Importer interface
+    {
+      canonicalize(url) {
+        console.log(`Called canonicalize: ${url}`)
+        if (url.startsWith("file://")) {
+          return new URL(url);
+        } else {
+          return new URL(`file://${topDir}/${url}`);
+        }
+      },
+      load(canonicalUrl) {
+        console.log(`Called load: ${canonicalUrl}`)
+        var filename = canonicalUrl.pathname;
+        if (!filename.endsWith(".scss")) {
+          filename += ".scss";
+        }
+
+        if (!utils.fileExists(filename)) {
+          filename = utils.addLeadingUnderscore(filename);
+        }
+
+        if (!utils.fileExists(filename)) {
+          throw new Error(`File not found: ${filename}`);
+        }
+
+        console.log(`Loading ${filename}`);
+        return { contents: utils.readFile(filename), syntax: "scss", };
+      },
+    },
+  ],
+});
 console.log(res.css);
 
 console.log(`Time taken: ${Date.now() - startTime}ms`);
