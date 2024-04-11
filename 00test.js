@@ -1,11 +1,13 @@
 import * as sass from "./sass.default.js";
 
 console.log(sass.info);
-console.log(1);
+
+var startTime = Date.now();
 const res = sass.compileString(`
 .box {
   width: 10px + 15px;
 }
 `)
-console.log(2);
-console.log(res);
+console.log(res.css);
+
+console.log(`Time taken: ${Date.now() - startTime}ms`);
