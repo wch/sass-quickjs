@@ -36,6 +36,21 @@ Then the binary can be used like this:
 ./sass test.scss
 ```
 
+## Emit C source code
+
+The following command will emit C source code which can be compiled into a standalone executable:
+
+```
+qjsc -S 1000000 -m -e -o sass.c sass.js
+```
+
+To compile to a binary, you will need to specify the include dir and library dir for QuickJS. These directories can typically be found by running `which qjsc` and searching around in the relative paths.
+
+```
+gcc -I /nix/store/f1sfjkih8mxyn2hh04gnz8zhkn8i79lq-quickjs-2021-03-27/include/quickjs -L /nix/store/f1sfjkih8mxyn2hh04gnz8zhkn8i79lq-quickjs-2021-03-27/lib/quickjs -lquickjs -o sass sass.c
+```
+
+
 ## Notes
 
 There is a [bug in QuickJS](https://github.com/bellard/quickjs/issues/275) that I worked around by modifying code in sass.dart.js. Once QuickJS fixes this bug, those workarounds shouldn't be needed anymore.
