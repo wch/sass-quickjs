@@ -10,13 +10,13 @@ Get the QuickJS command line tool. An easy way to do this is to simply download 
 Then run:
 
 ```
-qjs --module sass.js test.scss
+qjs sass.js test.scss
 ```
 
 To compile Bootstrap 5, I needed to use a larger stack size:
 
 ```
-qjs --stack-size 1000000 sass.js bootstrap.scss
+qjs --stack-size 1000000 sass.js bootstrap5/bootstrap.scss > bootstrap.css
 ```
 
 Note: There currently seems to be a bug handling comments with Bootstrap. This may be due to the workarounds that I added (see Notes section below) not being quite right.
@@ -27,7 +27,7 @@ Note: There currently seems to be a bug handling comments with Bootstrap. This m
 This will compile it to a standalone binary file named `sass`:
 
 ```
-qjsc -S 1000000 -m -o sass sass.js
+qjsc -S 1000000 -o sass sass.js
 ```
 
 Then the binary can be used like this:
@@ -41,7 +41,7 @@ Then the binary can be used like this:
 The following command will emit C source code which can be compiled into a standalone executable:
 
 ```
-qjsc -S 1000000 -m -e -o sass.c sass.js
+qjsc -S 1000000 -e -o sass.c sass.js
 ```
 
 To compile to a binary, you will need to specify the include dir and library dir for QuickJS. These directories can typically be found by running `which qjsc` and searching around in the relative paths.

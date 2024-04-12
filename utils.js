@@ -2,14 +2,14 @@ import * as os from "os";
 import * as std from "std";
 
 export function readFile(path, _encoding) {
-  var f, ret;
-  try {
-    f = std.open(path, "r");
-    ret = f.readAsString();
-    f.close();
-  } catch (e) {
-    ret = undefined;
+  let f, ret;
+  let errObj = {};
+  f = std.open(path, "r", errObj);
+  if (errObj.errno !== 0) {
+    console.error(`Error opening file: ${path}`);
   }
+  ret = f.readAsString();
+  f.close();
   return ret;
 }
 
