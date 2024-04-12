@@ -69,7 +69,12 @@ class URL {
 
 globalThis.URL = URL;
 
-console.error = console.log;
+console.error = (...args) => {
+    const stderr = std.err;
+    const errorMessage = args.map(String).join(' ') + '\n';
+    stderr.puts(errorMessage);
+  }
+
 globalThis.console = console;
 
 globalThis.location = new URL(`file://${os.getcwd()[0]}/`);

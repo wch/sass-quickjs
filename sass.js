@@ -53,4 +53,4 @@ const res = sass.compileString(fileContent, {
 });
 console.log(res.css);
 
-console.log(`Time taken: ${Date.now() - startTime}ms`);
+console.error(`Time taken: ${Date.now() - startTime}ms`);
