@@ -23,7 +23,7 @@ const res = sass.compileString(fileContent, {
     // An implementation of the Importer interface
     {
       canonicalize(url) {
-        console.log(`Called canonicalize: ${url}`)
+        // console.log(`Called canonicalize: ${url}`)
         if (url.startsWith("file://")) {
           return new URL(url);
         } else {
@@ -31,7 +31,7 @@ const res = sass.compileString(fileContent, {
         }
       },
       load(canonicalUrl) {
-        console.log(`Called load: ${canonicalUrl}`)
+        // console.log(`Called load: ${canonicalUrl}`)
         var filename = canonicalUrl.pathname;
         if (!filename.endsWith(".scss")) {
           filename += ".scss";
@@ -45,7 +45,7 @@ const res = sass.compileString(fileContent, {
           throw new Error(`File not found: ${filename}`);
         }
 
-        console.log(`Loading ${filename}`);
+        // console.log(`Loading ${filename}`);
         return { contents: utils.readFile(filename), syntax: "scss", };
       },
     },
