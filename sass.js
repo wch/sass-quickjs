@@ -3,7 +3,7 @@ import * as utils from "./utils.js";
 import * as os from "os";
 import * as std from "std";
 
-import * as sass from "./sass.default.js";
+import * as sass from "./lib/sass.default.js";
 
 // var startTime = Date.now();
 
