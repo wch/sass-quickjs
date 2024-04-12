@@ -4,7 +4,7 @@ import * as std from "std";
 
 import * as sass from "./sass.default.js";
 
-var startTime = Date.now();
+// var startTime = Date.now();
 
 
 var topDir = os.getcwd()[0];
@@ -53,4 +53,4 @@ const res = sass.compileString(fileContent, {
 });
 console.log(res.css);
 
-console.error(`Time taken: ${Date.now() - startTime}ms`);
+// console.error(`Time taken: ${Date.now() - startTime}ms`);
