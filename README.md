@@ -10,7 +10,7 @@ Get the QuickJS command line tool. An easy way to do this is to simply download 
 Then run:
 
 ```
-qjs sass.js test.scss
+qjs sass.js examples/test.scss
 ```
 
 To compile Bootstrap 5, I needed to use a larger stack size:
@@ -33,7 +33,7 @@ qjsc -S 1000000 -o sass sass.js
 Then the binary can be used like this:
 
 ```
-./sass test.scss
+./sass examples/test.scss
 ```
 
 ## Emit C source code
