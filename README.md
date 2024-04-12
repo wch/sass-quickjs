@@ -55,4 +55,4 @@ gcc -I /nix/store/f1sfjkih8mxyn2hh04gnz8zhkn8i79lq-quickjs-2021-03-27/include/qu
 
 There is a [bug in QuickJS](https://github.com/bellard/quickjs/issues/275) that I worked around by modifying code in sass.dart.js. Once QuickJS fixes this bug, those workarounds shouldn't be needed anymore.
 
-The QuickJS environment is missing some common things from a browser or NodeJS runtime, like `URL()` and `console.error`. Some of those things also needed to be added explicitly to `globalThis`. These things are done in `utils.js`.
+The QuickJS environment is missing some common things from a browser or NodeJS runtime, like `URL()` and `console.error`. Some of those things also needed to be added explicitly to `globalThis`. These things are done in `browser-shims.js`.

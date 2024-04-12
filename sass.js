@@ -1,3 +1,4 @@
+import * as browserShims from "./browser-shims.js";
 import * as utils from "./utils.js";
 import * as os from "os";
 import * as std from "std";
